@@ -139,7 +139,7 @@ public class ReservaVueloSteps extends ConfiWebDriver {
         reservaVueloEsc1.setModalidad(Modalidad.IDA_Y_VUELTA);
         reservaVueloEsc1.setOrigen(new Ubicacion("Barranquilla","Atlántico","Colombia"));
         reservaVueloEsc1.setDestino(new Ubicacion("Bogotá","Bogotá D.C.","Colombia"));
-        reservaVueloEsc1.setFechaIda(LocalDate.of(2022,1,15));
+        reservaVueloEsc1.setFechaIda(LocalDate.of(2022,1,20));
         reservaVueloEsc1.setFechaVuelta(LocalDate.of(2022,1,25));
         reservaVueloEsc1.setNoAdultos(2);
         reservaVueloEsc1.setClaseViaje(ClaseViaje.ECONOMICA);
