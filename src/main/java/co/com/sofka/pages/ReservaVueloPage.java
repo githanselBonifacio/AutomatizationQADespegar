@@ -17,7 +17,9 @@ public class ReservaVueloPage extends CommonActionOnpages {
     //localizadores para ingresar datos
 
     private final By origen = By.xpath("//*[@id=\"searchbox-sbox-box-flights\"]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div[1]/div/input");
+    private final By cobtainerOrigen =By.xpath("//*[@id=\"searchbox-sbox-box-flights\"]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div[1]/div");
     private final By destino = By.xpath("//*[@id=\"searchbox-sbox-box-flights\"]/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/div/div/input");
+    private final By containeDestino = By.xpath("//*[@id=\"searchbox-sbox-box-flights\"]/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/div/div");
     private final By campoFechaIda = By.xpath("//*[@id=\"searchbox-sbox-box-flights\"]/div/div[2]/div[1]/div[1]/div[2]/div/div[1]/div/div/div");
     private final By btnAplicarFechas = By.xpath("//*[@id=\"component-modals\"]/div[1]/div[2]/div[1]/button");
     private  final By moverMesDerecha = By.cssSelector("#component-modals > div.sbox5-floating-tooltip.sbox5-floating-tooltip-opened > div.sbox5-3-floating-tooltip-datepicker-wrapper > div.calendar-container > a.calendar-arrow-right > svg");
@@ -42,13 +44,17 @@ public class ReservaVueloPage extends CommonActionOnpages {
         super(driver);
         this.reservaVuelo = reservaVuelo;
     }
-    public void llenarFormularioReservaVuelo(){
-        Click(destino);
+    public void llenarFormularioReservaVuelo() throws InterruptedException {
+
+        Click(containeDestino);//este campo presenta errores al ingresar datos
+        //espera de 1 segundo para que no se superponga el click con la digitación del texto
+        //no hay condición alguna para esta espera entre el click y la digitalización del texto
+        Thread.sleep(1000);
         TypeInto(destino,reservaVuelo.getDestino().toString());
         AddWaitByVisibility(autocompletarUbicacion,5);
         Click(autocompletarUbicacion);
 
-        Click(origen);
+        Click(cobtainerOrigen);
         TypeInto(origen,reservaVuelo.getOrigen().toString());
         AddWaitByVisibility(autocompletarUbicacion,5);
         Click(autocompletarUbicacion);
